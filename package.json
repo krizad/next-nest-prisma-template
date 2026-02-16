@@ -1,0 +1,37 @@
+{
+  "name": "@fullstack/monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Full-stack monorepo boilerplate with NestJS backend and Next.js frontend",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "dev": "pnpm --parallel --filter @fullstack/backend --filter @fullstack/frontend run dev",
+    "build": "pnpm run --recursive build",
+    "build:backend": "pnpm --filter @fullstack/backend build",
+    "build:frontend": "pnpm --filter @fullstack/frontend build",
+    "test": "pnpm run --recursive test",
+    "test:backend": "pnpm --filter @fullstack/backend test",
+    "test:frontend": "pnpm --filter @fullstack/frontend test",
+    "lint": "pnpm run --recursive lint",
+    "lint:fix": "pnpm run --recursive lint:fix",
+    "clean": "pnpm run --recursive clean && rm -rf node_modules",
+    "clean:node-modules": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
+    "clean:build": "find . -name 'dist' -type d -prune -exec rm -rf '{}' + && find . -name '.next' -type d -prune -exec rm -rf '{}' +",
+    "db:setup": "pnpm --filter @fullstack/backend db:setup",
+    "db:migrate": "pnpm --filter @fullstack/backend migrate:dev",
+    "db:seed": "pnpm --filter @fullstack/backend seed",
+    "db:reset": "pnpm --filter @fullstack/backend db:reset",
+    "typecheck": "pnpm run --recursive typecheck",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,yml,yaml}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,yml,yaml}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2",
+    "turbo": "^2.3.3"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.15.4"
+}

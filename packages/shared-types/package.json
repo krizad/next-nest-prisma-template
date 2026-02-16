@@ -1,0 +1,29 @@
+{
+  "name": "@fullstack/shared-types",
+  "version": "1.0.0",
+  "description": "Shared types, DTOs, and validators for full-stack monorepo",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist node_modules .turbo",
+    "lint": "echo 'No lint configured for shared-types'",
+    "test": "echo 'No tests configured for shared-types'",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  },
+  "peerDependencies": {
+    "zod": "^4.3.6"
+  }
+}
