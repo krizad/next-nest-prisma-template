@@ -41,8 +41,8 @@ services:
   # Backend (NestJS)
   backend:
     build:
-      context: ./backend
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: backend/Dockerfile
     container_name: fullstack-backend
     restart: unless-stopped
     environment:
@@ -54,23 +54,23 @@ services:
       JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-change-this-refresh-secret}
       CORS_ORIGINS: http://localhost:3000,http://frontend:3000
     ports:
-      - '8080:8080'
+      - '8081:8080'
     networks:
       - fullstack-network
     depends_on:
       postgres:
         condition: service_healthy
-    volumes:
-      - ./backend:/app
-      - /app/node_modules
-      - /app/dist
+    # volumes:
+    #   - ./backend:/app
+    #   - /app/node_modules
+    #   - /app/dist
     command: sh -c "npx prisma generate && npx prisma migrate deploy && node dist/main"
 
   # Frontend (Next.js)
   frontend:
     build:
-      context: ./frontend
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: frontend/Dockerfile
     container_name: fullstack-frontend
     restart: unless-stopped
     environment:
@@ -83,10 +83,10 @@ services:
       - fullstack-network
     depends_on:
       - backend
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-      - /app/.next
+    # volumes:
+    #   - ./frontend:/app
+    #   - /app/node_modules
+    #   - /app/.next
 
 volumes:
   postgres_data:

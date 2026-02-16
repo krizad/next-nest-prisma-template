@@ -10,7 +10,7 @@ interface User {
   id: string;
   name: string;
   email: string;
-  role: string;
+  role?: string;
 }
 
 export function UserList({ users }: Readonly<{ users: User[] }>) {

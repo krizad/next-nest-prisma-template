@@ -42,8 +42,9 @@ export function useFetch<T>(
           onSuccess?.(result.data);
         }
       } else {
-        setState({ data: null, error: result.error || 'Unknown error', isLoading: false });
-        onError?.(result.error || 'Unknown error');
+        const errorMessage = result.error.message || 'Unknown error';
+        setState({ data: null, error: errorMessage, isLoading: false });
+        onError?.(errorMessage);
       }
     } catch (err) {
       const errorMsg = err instanceof Error ? err.message : 'Fetch failed';
@@ -102,8 +103,9 @@ export function useMutation<T, P = unknown>(
             onSuccess?.(result.data);
           }
         } else {
-          setState({ data: null, error: result.error || 'Unknown error', isLoading: false });
-          onError?.(result.error || 'Unknown error');
+          const errorMessage = result.error.message || 'Unknown error';
+          setState({ data: null, error: errorMessage, isLoading: false });
+          onError?.(errorMessage);
         }
       } catch (err) {
         const errorMsg = err instanceof Error ? err.message : 'Mutation failed';

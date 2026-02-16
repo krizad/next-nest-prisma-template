@@ -13,7 +13,7 @@ export interface GetUsersQuery {
  * Example: CRUD operations with pagination
  */
 export const userService = {
-  async getUsers(query?: GetUsersQuery): Promise<PaginatedResponse<UserDto>> {
+  async getUsers(query?: GetUsersQuery): Promise<ApiResponse<PaginatedResponse<UserDto>>> {
     const params = new URLSearchParams();
     if (query?.page) params.append('page', query.page.toString());
     if (query?.limit) params.append('limit', query.limit.toString());
@@ -22,7 +22,7 @@ export const userService = {
     const queryString = params.toString();
     const endpoint = queryString ? `/users?${queryString}` : '/users';
 
-    return apiClient.get<UserDto[]>(endpoint) as Promise<PaginatedResponse<UserDto>>;
+    return apiClient.get<PaginatedResponse<UserDto>>(endpoint);
   },
 
   async getUserById(id: string): Promise<ApiResponse<UserDto>> {

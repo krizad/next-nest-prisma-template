@@ -24,10 +24,10 @@ export function useUserProfile(userId: string) {
           profileService.getProfileStats(userId),
         ]);
 
-        if (profileResponse.success && profileResponse.data) {
+        if (profileResponse.success) {
           setProfile(profileResponse.data);
         } else {
-          setError(profileResponse.error || 'Failed to load profile');
+          setError(profileResponse.error.message || 'Failed to load profile');
         }
 
         if (statsResponse.success && statsResponse.data) {
