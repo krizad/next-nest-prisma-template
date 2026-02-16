@@ -2,31 +2,31 @@
 
 
 set-project-name:
-	@read -p "กรอกชื่อโปรเจกต์ใหม่: " NAME; \
+	@read -p "Enter new project name: " NAME; \
 	npm --prefix ./frontend pkg set name="$$NAME"; \
 	npm --prefix ./backend pkg set name="$$NAME"; \
-	echo "เปลี่ยนชื่อโปรเจกต์เป็น $$NAME ในทั้ง frontend และ backend แล้ว"
+	echo "Project name changed to $$NAME in both frontend and backend."
 
 
 set-description:
-	@read -p "กรอก description ใหม่: " DESC; \
+	@read -p "Enter new description: " DESC; \
 	npm --prefix ./frontend pkg set description="$$DESC"; \
 	npm --prefix ./backend pkg set description="$$DESC"; \
-	echo "เปลี่ยน description เป็น $$DESC ในทั้ง frontend และ backend แล้ว"
+	echo "Description changed to $$DESC in both frontend and backend."
 
 
 set-author:
-	@read -p "กรอกชื่อ author ใหม่: " AUTHOR; \
+	@read -p "Enter new author: " AUTHOR; \
 	npm --prefix ./frontend pkg set author="$$AUTHOR"; \
 	npm --prefix ./backend pkg set author="$$AUTHOR"; \
-	echo "เปลี่ยน author เป็น $$AUTHOR ในทั้ง frontend และ backend แล้ว"
+	echo "Author changed to $$AUTHOR in both frontend and backend."
 
 
 set-version:
-	@read -p "กรอก version ใหม่ (เช่น 1.0.0): " VERSION; \
+	@read -p "Enter new version (e.g. 1.0.0): " VERSION; \
 	npm --prefix ./frontend pkg set version="$$VERSION"; \
 	npm --prefix ./backend pkg set version="$$VERSION"; \
-	echo "เปลี่ยน version เป็น $$VERSION ในทั้ง frontend และ backend แล้ว"
+	echo "Version changed to $$VERSION in both frontend and backend."
 
 .PHONY: set-project-name set-description set-author set-version
 .PHONY: help setup install clean dev build test lint format typecheck
