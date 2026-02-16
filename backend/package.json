@@ -2,7 +2,7 @@
   "name": "@fullstack/backend",
   "version": "1.0.0",
   "description": "NestJS backend with Prisma ORM - Full-stack monorepo",
-  "author": "",
+  "author": "KriZad",
   "private": true,
   "license": "MIT",
   "scripts": {
