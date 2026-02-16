@@ -1,3 +1,42 @@
+# Makefile สำหรับเปลี่ยนชื่อและรายละเอียดใน package.json ของ frontend และ backend ด้วย npm pkg set
+
+set-project-name:
+	@if [ -z "$(NAME)" ]; then \
+		echo "กรุณาระบุ NAME เช่น make set-project-name NAME=my-app"; \
+		exit 1; \
+	fi; \
+	npm --prefix ./frontend pkg set name="$(NAME)"; \
+	npm --prefix ./backend pkg set name="$(NAME)"; \
+	echo "เปลี่ยนชื่อโปรเจกต์เป็น $(NAME) ในทั้ง frontend และ backend แล้ว"
+
+set-description:
+	@if [ -z "$(DESC)" ]; then \
+		echo "กรุณาระบุ DESC เช่น make set-description DESC=\"My project\""; \
+		exit 1; \
+	fi; \
+	npm --prefix ./frontend pkg set description="$(DESC)"; \
+	npm --prefix ./backend pkg set description="$(DESC)"; \
+	echo "เปลี่ยน description เป็น $(DESC) ในทั้ง frontend และ backend แล้ว"
+
+set-author:
+	@if [ -z "$(AUTHOR)" ]; then \
+		echo "กรุณาระบุ AUTHOR เช่น make set-author AUTHOR=yourname"; \
+		exit 1; \
+	fi; \
+	npm --prefix ./frontend pkg set author="$(AUTHOR)"; \
+	npm --prefix ./backend pkg set author="$(AUTHOR)"; \
+	echo "เปลี่ยน author เป็น $(AUTHOR) ในทั้ง frontend และ backend แล้ว"
+
+set-version:
+	@if [ -z "$(VERSION)" ]; then \
+		echo "กรุณาระบุ VERSION เช่น make set-version VERSION=1.0.0"; \
+		exit 1; \
+	fi; \
+	npm --prefix ./frontend pkg set version="$(VERSION)"; \
+	npm --prefix ./backend pkg set version="$(VERSION)"; \
+	echo "เปลี่ยน version เป็น $(VERSION) ในทั้ง frontend และ backend แล้ว"
+
+.PHONY: set-project-name set-description set-author set-version
 .PHONY: help setup install clean dev build test lint format typecheck
 .PHONY: dev-backend dev-frontend dev-shared
 .PHONY: build-backend build-frontend build-shared
