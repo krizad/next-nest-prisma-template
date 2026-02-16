@@ -88,9 +88,9 @@ clean-all: clean docker-clean ## Clean everything (build + deps + docker)
 
 dev: ## Start all dev servers (backend + frontend)
 	@echo "$(CYAN)Starting development servers...$(NC)"
-	@echo "$(GREEN)  Backend:  http://localhost:8081$(NC)"
+	@echo "$(GREEN)  Backend:  http://localhost:8080$(NC)"
 	@echo "$(GREEN)  Frontend: http://localhost:3000$(NC)"
-	@echo "$(GREEN)  Swagger:  http://localhost:8081/api-docs$(NC)"
+	@echo "$(GREEN)  Swagger:  http://localhost:8080/api-docs$(NC)"
 	@pnpm dev
 
 dev-backend: ## Start only backend dev server
@@ -250,9 +250,9 @@ info: ## Show project information
 	@echo "  $(GREEN)pnpm:$(NC)     $$(pnpm -v 2>/dev/null || echo 'Not installed')"
 	@echo "  $(GREEN)Docker:$(NC)   $$(docker -v 2>/dev/null | cut -d ' ' -f3 | tr -d ',' || echo 'Not installed')"
 	@echo ""
-	@echo "  $(GREEN)Backend:$(NC)  http://localhost:8081"
+	@echo "  $(GREEN)Backend:$(NC)  http://localhost:8080"
 	@echo "  $(GREEN)Frontend:$(NC) http://localhost:3000"
-	@echo "  $(GREEN)Swagger:$(NC)  http://localhost:8081/api-docs"
+	@echo "  $(GREEN)Swagger:$(NC)  http://localhost:8080/api-docs"
 	@echo "  $(GREEN)Database:$(NC) localhost:5432"
 	@echo "  $(GREEN)pgAdmin:$(NC)  http://localhost:5050  (admin@admin.com / admin)"
 	@echo "  $(GREEN)Prisma:$(NC)   run 'make db-studio'"
@@ -266,7 +266,7 @@ health: ## Check application health
 	@echo "$(CYAN)Checking system health...$(NC)"
 	@$(COMPOSE) ps 2>/dev/null || echo "  $(YELLOW)Docker not running$(NC)"
 	@echo ""
-	@curl -sf http://localhost:8081/api/health > /dev/null 2>&1 && echo "  $(GREEN)Backend (8081): Running$(NC)" || echo "  $(YELLOW)Backend (8081): Not running$(NC)"
+	@curl -sf http://localhost:8080/api/health > /dev/null 2>&1 && echo "  $(GREEN)Backend (8080): Running$(NC)" || echo "  $(YELLOW)Backend (8080): Not running$(NC)"
 	@curl -sf http://localhost:3000 > /dev/null 2>&1 && echo "  $(GREEN)Frontend (3000): Running$(NC)" || echo "  $(YELLOW)Frontend (3000): Not running$(NC)"
 
 # Aliases

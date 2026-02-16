@@ -54,7 +54,7 @@ services:
       JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-change-this-refresh-secret}
       CORS_ORIGINS: http://localhost:3000,http://frontend:3000
     ports:
-      - '8081:8080'
+      - '8080:8080'
     networks:
       - fullstack-network
     depends_on:
